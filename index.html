@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Mriss - Multimedia Developer</title>
+    <!-- Normalize For Render Page -->
+    <link rel="stylesheet" href="style/css/normalize.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awsome icons -->
+    <link rel="stylesheet" href="style/css/all.min.css">
+    <!-- Start Style page css -->
+    <link rel="stylesheet" href="style/css/home.css">
+    
+
+
+    <style>
+     #loader-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #292929;
+  display: flex;
+  justify-content: center; /* مركز أفقياً */
+  align-items: center;     /* مركز عمودياً */
+  z-index: 9999;
+}
+
+.loader {
+  font-size: 24px; /* صغر الحجم ديال النص */
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* مسافة بين الصورة والخط */
+}
+
+.loader img {
+  width: 200px;   /* عرض الصورة مصغر */
+  height: auto;  /* يحافظ على النسبة */
+}
+
+.loader::after {
+  content: '';
+  height: 8px;
+  width: 0;
+  display: block;
+  background: #fff;
+  animation: lineGrow 2.5s linear infinite;
+  border-radius: 2px;
+  margin-top: 2px;
+  align-self: stretch; /* باش الخط يعمّر العرض ديال اللودر */
+}
+
+@keyframes lineGrow {
+  to {
+    width: 100%;
+  }
+}
+
+    </style>
+
+    
+</head>
+
+
+<body>
+   
+  <!-- Loader -->
+   <div id="loader-wrapper" >
+    <span class="loader">
+      <img src="style/img/mrissm.png" alt="Loading...">
+    </span>
+  </div>
+
+  <script>
+    const loader = document.getElementById("loader-wrapper");
+    const minDuration = 2000; // 1 ثانية
+    const startTime = performance.now();
+
+    window.addEventListener("load", () => {
+      const currentTime = performance.now();
+      const elapsed = currentTime - startTime;
+      const timeLeft = minDuration - elapsed;
+
+      if (timeLeft > 0) {
+        setTimeout(() => {
+          loader.style.display = "none";
+        }, timeLeft);
+      } else {
+        loader.style.display = "none";
+      }
+    });
+  </script>
+<!-- icons whatsapp linkdin instagram -->
+ <div class="stikicone">
+<div class="icons">
+    <a href=""><i class="fa-brands fa-facebook" ></i></a>
+    <a href="https://wa.me/message/UO4ZHMQEMLZ2B1"><i class="fa-brands fa-whatsapp" ></i></a>
+    <a href="https://www.instagram.com/mohammed_mriss_creative/"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/mohammed-mriss/"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://www.behance.net/mohammedmriss"><i class="fa-brands fa-behance"></i></a>
+    <a href="https://www.pinterest.com/mohammedmriss/"><i class="fa-brands fa-pinterest"></i></a>
+    
+</div>
+</div>
+
+<!-- Carte Profil -->
+<div class="profile-card">
+    <button class="close-btn" id="closeBtn">&times;</button>
+    
+    <!-- Section gauche (Profil + QR) -->
+    <div class="left-section">
+        <img src="style/img/imglo (1).jpeg" alt="Photo de profil" class="profile-img">
+        <h2 class="profile-name">Mohammed Mriss</h2>
+        <p class="profile-title">Multimedia Developer</p>
+        
+        <div class="qr-container">
+            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?data=https://wa.me/212612291629&size=150x150" alt="WhatsApp QR">
+            <p class="qr-text">Contact me on WhatsApp</p>
+        </div>
+    </div>
+    
+    <!-- Section droite (About) -->
+    <div class="right-section">
+        <div class=""></div>
+        <div class="" style="padding-left: 30px; padding-right: 30px;">
+        <h1 class="section-title" style="color: black; ">Say Hi on WhatsApp!</h1>
+        <p class="about-text">
+            Hello! I’m Mohamed, a specialist in multimedia development, which includes graphic design, web development, and video editing. I use these skills to help people achieve their goals in a smart and effective way.
+            Do you have any questions or need assistance? Scan the QR code to connect with me directly on WhatsApp. I’m here to chat and make things easier for you!
+
+
+        </p>
+        </div>
+    
+    </div>
+</div>
+
+<script>
+    // Générer le QR code WhatsApp
+    function generateQRCode() {
+        const phoneNumber = "212612291629"; // Remplacez par votre numéro
+        const whatsappUrl = `https://wa.me/${phoneNumber}`;
+        const qrSize = 120;
+        const qrCodeUrl = `https://chart.googleapis.com/chart?cht=qr&chs=${qrSize}x${qrSize}&chl=${encodeURIComponent(whatsappUrl)}`;
+        
+        document.getElementById('whatsappQr').innerHTML = `<img src="${qrCodeUrl}" alt="QR Code WhatsApp">`;
+    }
+    
+    // Fermer la carte
+    document.getElementById('closeBtn').addEventListener('click', function() {
+        document.querySelector('.profile-card').style.display = 'none';
+    });
+    
+    // Générer le QR code au chargement
+    document.addEventListener('DOMContentLoaded', generateQRCode);
+</script>
+        
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="style/video/" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+   
+      <!-- Start header -->
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <a href=""><img src="style/img/logomo.png" alt="" style="height: 80px;"></a>
+        </div>
+        <nav>
+            <i class="fas fa-bars menu"></i>
+            <ul class="bar">
+                <li><a href="#Home" class="active">Home</a></li>
+                <li><a href="#Projects">Projects</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Resum">Resum</a></li>
+                <li><a href="#Contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<!-- End header -->
+
+
+    <!-- Start landing -->
+    <div class="landing" id="Home">
+        <div class="container" >
+            <div class="text">
+                <h1>HI THERE<br>
+                    I'm Mohammed Mriss
+                </h1>
+                <p>
+                    I am a specialized technician in multimedia development, currently focusing on the field of graphic design.
+                     I have a strong passion for everything digital and I constantly strive to develop my skills in this domain.
+                </p>
+                <a href="" class="btn">
+                    mohammedmriss.officielle@gmail.com
+                </a>
+            </div>
+            <div class="image-landing">
+                <img src="style/img/mriss1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- End landing -->
+    <!-- Start Portfolio -->
+    <div class="portfolio" id="Projects">
+        <div class="container">
+            <div class="main-heading">
+                <h2>Projects</h2>
+                <!-- <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p> -->
+            </div>
+            
+            <ul class="shuffle">
+                <li class="active"><button data-name="all">All</button></li>
+                <li><button data-name="social_media">Social Media</button></li>
+                <li><button data-name="print">Print</button></li>
+                <li><button data-name="web">Web</button></li>
+                <li><button data-name="video_editing">Video Editing</button></li>
+                <li><button data-name="thumbnail">Thumbnail</button></li>
+                <li><button data-name="branding">Branding</button></li>
+              </ul>
+              
+              <script>
+                const btns = document.querySelectorAll('.shuffle li button');
+              
+                btns.forEach((button) => {
+                  button.addEventListener('click', () => {
+                    // نحيد الكلاس active من جميع العناصر
+                    btns.forEach((btn) => {
+                      btn.parentElement.classList.remove('active');
+                    });
+              
+                    // نزيد الكلاس active للعنصر اللي تكليكات عليه
+                    button.parentElement.classList.add('active');
+              
+                    // هنا تقدر تزيد الكود ديال التصنيف حسب data-name
+                    console.log('Category selected:', button.getAttribute('data-name'));
+                  });
+                });
+              </script>
+              
+    
+            <div class="images-container">
+                <!-- Les images seront ajoutées dynamiquement par JavaScript -->
+            </div>
+
+
+
+         
+        </div>
+        
+        <button href="#" id="loadMore" class="more">More</button>
+        <script>
+// المتغيرات الأساسية
+const buttons = document.querySelectorAll(".shuffle button");
+const imagesContainer = document.querySelector(".images-container");
+const imageExtensions = ["jpg", "png", "jpeg", "gif", "webp"];
+const categories = ["social_media", "print", "web", "motion","video_editing", "thumbnail", "branding"];
+let currentShown = 8;
+
+// دالة تحميل الصور
+async function loadCategory(selectedCategory) {
+  imagesContainer.innerHTML = "";
+  let imageCount = 0;
+  
+  // تحديد التصنيفات المطلوبة
+  const catsToLoad = (selectedCategory === "all") 
+    ? categories 
+    : [selectedCategory];
+
+  // البحث في كل تصنيف
+  for (const cat of catsToLoad) {
+    let i = 1;
+    let foundImages = true;
+    
+    // البحث عن الصور حتى الرقم 100 (يمكن زيادة الرقم حسب الحاجة)
+    while (foundImages && i <= 100) {
+      const imageFound = await tryImageFormats(cat, i, selectedCategory);
+      
+      if (!imageFound) {
+        foundImages = false;
+      } else {
+        i++;
+      }
+    }
+  }
+
+  updateLoadMoreButton();
+}
+
+// دالة تجربة صيغ الصور المختلفة
+async function tryImageFormats(cat, index, selectedCategory) {
+  let found = false;
+  
+  for (const ext of imageExtensions) {
+    // إنشاء مسارين مختلفين للصورة
+    const path1 = `${cat}/images/${cat}${index}.${ext}`;
+    const path2 = `${cat}/images/${cat} (${index}).${ext}`;
+    
+    if (await checkImageExists(path1)) {
+      createImageBox(path1, cat, index, selectedCategory);
+      found = true;
+      break;
+    } else if (await checkImageExists(path2)) {
+      createImageBox(path2, cat, index, selectedCategory);
+      found = true;
+      break;
+    }
+  }
+  
+  return found;
+}
+
+// باقي الدوال كما هي في السكريبت السابق
+function checkImageExists(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+}
+
+function createImageBox(path, cat, index, selectedCategory) {
+  const box = document.createElement("div");
+  box.className = "box";
+  
+  const isHidden = document.querySelectorAll(".box").length >= currentShown;
+  const hiddenClass = isHidden ? "extra-images" : "";
+  
+  box.innerHTML = `
+    <div class="img ${hiddenClass}" style="${isHidden ? 'display:none;' : ''}">
+      <img src="${path}" alt="${cat}" loading="lazy">
+    </div>
+    ${(selectedCategory === "all") ? `
+      <div class="caption">
+        <h4>${cat}</h4>
+      </div>
+    ` : ''}
+  `;
+  
+  box.addEventListener('click', () => {
+    window.location.href = `${cat}/home.html`;
+  });
+  
+  imagesContainer.appendChild(box);
+}
+
+function updateLoadMoreButton() {
+  setTimeout(() => {
+    const hiddenImages = document.querySelectorAll(".extra-images");
+    document.getElementById("loadMore").style.display = 
+      hiddenImages.length > 0 ? "block" : "none";
+  }, 100);
+}
+
+// الأحداث
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    buttons.forEach((b) => b.parentElement.classList.remove("active"));
+    btn.parentElement.classList.add("active");
+    currentShown = 8;
+    loadCategory(btn.dataset.name);
+  });
+});
+
+// التحميل الأولي
+window.addEventListener("DOMContentLoaded", () => {
+  loadCategory("all");
+  document.querySelector('[data-name="all"]').parentElement.classList.add("active");
+});
+
+// زر عرض المزيد
+document.getElementById("loadMore").addEventListener("click", function() {
+  const hiddenImages = document.querySelectorAll(".extra-images");
+  const toShow = Math.min(8, hiddenImages.length);
+  
+  for (let i = 0; i < toShow; i++) {
+    hiddenImages[i].style.display = "block";
+    hiddenImages[i].classList.remove("extra-images");
+  }
+  
+  updateLoadMoreButton();
+});
+</script>
+           
+            
+    </div>
+    <!-- End Portfolio -->
+    <!-- Start Services  -->
+    <div class="services" id="Services">
+        <div class="container">
+            <div class="main-heading">
+                <h2>Services</h2>
+                <p>In this section, I will present the services I offer in the field of multimedia development,</p>
+            </div>
+            <div class="services-container">
+                <div class="srv-box">
+                    <!-- <i class="fas fa-desktop fa-3x"></i> -->
+                    <i class="fas fa-pencil-ruler fa-3x"></i>
+                    <div class="text">
+                        <h3>Graphic Design</h3>
+                        <p>
+                            I turn ideas into visually striking designs for print and social media.
+                             My focus is on delivering impactful and innovative visual solutions that leave a lasting impression.
+                        </p>
+                    </div>
+                </div>
+                <div class="srv-box">
+                    <!-- <i class="fas fa-cog fa-3x"></i> -->
+                    <i class="fas fa-desktop fa-3x"></i>
+                    <div class="text">
+                        <h3>Web Development</h3>
+                        <p>
+                            I turn ideas into attractive and functional websites that reflect a brand’s identity online. I focus on creating responsive,
+                             user-friendly designs that build a strong digital presence and leave a lasting impression.
+                        </p>
+                    </div>
+                </div>
+                <div class="srv-box">
+                    <!-- /*<i class="fas fa-pencil-ruler fa-3x"></i>*/ -->
+                    <i class="fas fa-film fa-3x"></i>
+                    <div class="text">
+                        <h3>Video Editing</h3>
+                        <p>
+                            I turn raw footage into polished and engaging product promo videos,
+                             ensuring your message captivates the audience, and get more sales.
+                        </p>
+                    </div>
+                </div>
+                <div class="srv-box">
+                    <i class="fas fa-eye fa-3x"></i>
+                    <!-- <i class="fas fa-camera fa-3x"></i> -->
+                    <div class="text">
+                        <h3>Branding</h3>
+                        <p>
+                            With essentials in motion design,
+                             I bring brands to life with dynamic motion designs, from animated logos to engaging visuals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Services  -->
+   
+    
+    <!-- Start information -->
+    <div class="info" id="About">
+        <div class="container">
+
+            <div class="testmonalise">
+
+                <div class="start-text">
+                    <h4>About me</h4>
+                    <p>In this section, I’ll give you a brief summary of my journey in the field of multimedia development — from graphic design to web development and video editing.</p>
+                </div>
+
+                <div class="content">
+                    <div class="image" >
+                        <img src="style/img/imglo (1).jpeg" alt="" >
+                        <span>Multimedia Developer</span>
+                    </div>
+                    <div class="text">
+                        <p>Hello! I'm Mohammed Mriss, a passionate Graphic Designer with one year of experience in digital design,
+                            branding, and social media content creation.
+                            I focus on building creative and modern visuals that align with brand identity and enhance audience engagement.
+                            With a strong motivation to grow and a curiosity for new technologies, including AI tools,
+                            I constantly seek ways to improve efficiency and bring fresh, impactful ideas to every project I work on. </p>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="html-css">
+                <div class="start-text">
+                    <h4>Skills Analysis</h4>
+                    <p>In this section, I will present an analysis of my skills to show how I’ve developed them and how they enable me to deliver high-quality work in the field of multimedia development.</p>
+                </div>
+                <div class="content">
+                    <div class="prog-holder">
+                        <h4> Graphic Design</h4>
+                        <div class="prog">
+                            <span style="width: 90%;" data-progress="90%"></span>
+                        </div>
+                    </div>
+                    <div class="prog-holder">
+                        <h4>development Web</h4>
+                        <div class="prog">
+                            <span style="width: 90%;" data-progress="90%"></span>
+                        </div>
+                    </div>
+                    <div class="prog-holder">
+                        <h4>Video Editing</h4>
+                        <div class="prog">
+                            <span style="width: 90%;" data-progress="90%"></span>
+                        </div>
+                    </div>
+                    <div class="prog-holder">
+                        <h4>Branding</h4>
+                        <div class="prog">
+                            <span style="width: 90%;" data-progress="90%"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End information -->
+         <!-- Start Resum  -->
+         <div class="resum" id="Resum">
+            <div class="container" >
+                <div class="main-heading">
+                    <h2>Resum</h2>
+                    <p>In this Resum, I'm sharing my journey in multimedia development, covering design, web, and video editing.</p>
+                </div>
+                
+                <div class="resum-container">
+
+                    <section class="experience" style="width: 50%;">
+                      <h2>EXPERIENCE</h2>
+                      <div class="job">
+                        <span class="date">2024/08/11 -  Present</span>
+                        <h3>Multimedia Developer<span class="company">FREELANCER</span></h3>
+                        <p>I work on diverse projects in the fields of design and video editing.
+                             I offer services in Graphic Design, Video Editing, Branding, and Website Creation.
+                             I’m committed to creativity, quality, and meeting deadlines,
+                             and I collaborate closely with clients to transform their ideas into professional work that leaves a strong impression.</p>
+                      </div>
+                
+                      <div class="job">
+                        <span class="date">2023/11/03 - 2024/07/09</span>
+                        <h3>Graphic Designer <span class="company">PRESTIGE DIGITAL</span></h3>
+                        <p>I am responsible for the design and creation of materials for a variety of media such as texts and packaging.
+                             I choose colors and textures to produce visuals, while taking into account trends and the seasonality of the products.</p>
+                      </div>
+                      <div class="job">
+                        <span class="date">2023/04/01 - 2023/09/12</span>
+                        <h3>Graphic Designer <span class="company">ANOUAR PUB</span></h3>
+                        <p>I worked in an advertising agency where I was responsible for designing all types of physical advertisements,
+                             such as billboards, flyers, menus, business cards, and posters.
+                              I focused on creating visually appealing designs that align with the client’s brand identity,
+                               using modern techniques while maintaining high quality and meeting deadlines.</p>
+                      </div>
+                      <div class="job">
+                        <span class="date">2022/12/01 - 2023/03/25</span>
+                        <h3>Multimedia Developer<span class="company">HOUDENGNEGOS</span></h3>
+                        <p>I work as a digital marketer. I film products, design product posters, and publish the posters through company emails.</p>
+                      </div>
+                      <div class="job">
+                        <span class="date">2021/11/05 - 2022/10/12</span>
+                        <h3>Multimedia Developer<span class="company">TABAA NOUR CAR</span></h3>
+                        <p>I was responsible for digital marketing within the company. I handled everything related to digital marketing strategies,
+                            visual content design, and digital communication.</p>
+                      </div>
+                    </section>
+
+                    <section class="education" style="width: 50%;">
+                      <h2>EDUCATION</h2>
+                      <div class="edu">
+                        <span class="date">2022</span>
+                        <h3>Technician Specialized In Multimedia Development</h3>
+                        <p>Specialized Institute of Graphic Arts of Casablanca - Casablanca, Morocco</p>
+                      </div>
+                
+                      <div class="edu">
+                        <span class="date">2019</span>
+                        <h3>Bachelor's degree of Science</h3>
+                        <p>Atlas - Casablanca, Morocco</p>
+                      </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+        <div class="resum" id="Resum">
+            <div class="container" >
+                <div class="main-heading">
+                    <h2>Skills</h2>
+                    <p>In this section, I'll highlight the general skills I’ve gained throughout my educational and professional journey.</p>
+                </div>
+                
+                <div class="resum-container">
+
+               
+                        <div class="language-skill">
+                          <h2 style="color:#eee;">LANGUAGES SKILLS</h2>
+                          <div class="lang-bar">
+                            <span>Arabic</span>
+                            <div class="dots">
+                              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot active"></div>
+                            </div>
+                          </div>
+                          <div class="lang-bar">
+                            <span>English</span>
+                            <div class="dots">
+                              <div class="dot active"></div><div class="dot active"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+                            </div>
+                          </div>
+                          <div class="lang-bar">
+                            <span>French</span>
+                            <div class="dots">
+                              <div class="dot active"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                            </div>
+                          </div>
+                        </div>
+                  
+                      <div class="knowledge">
+                        <h2 style="color: #eee;">KNOWLEDGE</h2>
+                        <ul>
+                          <li>Print Design</li>
+                          <li>Social Media</li>
+                          <li>Branding</li>
+                          <li>Webdesign</li>
+                          <li>Video Editing</li>
+                          <li>Motion Design</li>
+                          <li>Creation Websites</li>
+                        </ul>
+                      </div>
+                  
+                      
+
+                </div>
+            </div>
+        </div>
+    <!-- End Resum  -->
+    <!-- Start Contact -->
+    <div class="contact" id="Contact">
+      <div class="main-heading">
+          <h2>Contact Me</h2>
+      </div>
+      <div class="container">
+          <div class="box-left">
+              <h4>Our social Links</h4>
+              <p style="color: white;">
+                  here you will find some information about us such as email ,
+                   phone number , social networking sites . do net forget to follow us.
+              </p>
+              <span style="color: white;">mohammedmriss.officielle@gmail.com</span>
+              <span style="color: white;">+212612291629</span>
+              <div class="icons">
+                <a href=""><i class="fa-brands fa-facebook" ></i></a>
+                <a href="https://wa.me/message/UO4ZHMQEMLZ2B1"><i class="fa-brands fa-whatsapp" ></i></a>
+                <a href="https://www.instagram.com/mohammed_mriss_creative/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/mohammed-mriss/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.behance.net/mohammedmriss"><i class="fa-brands fa-behance"></i></a>
+                <a href="https://www.pinterest.com/mohammedmriss/"><i class="fa-brands fa-pinterest"></i></a>
+              </div>
+          </div>
+          <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+          <script>
+            (function(){
+              emailjs.init("aDQX_QHLdDCFtgldP"); // ← بدّل بـ Public Key ديالك
+            })();
+
+            
+                    
+          </script>
+<form id="contact-form" class="box-right">
+  <h4>Contact Me</h4>
+  <input type="text" id="name" placeholder="Full Name" required>
+  <input type="email" id="email" placeholder="Your Mail" required>
+  <input type="text" id="phone" placeholder="Your Phone" required>
+  
+  <input type="hidden" id="time" name="time" />
+<input type="hidden" id="user_location" name="user_location" />
+<input type="hidden" id="user_ip" name="user_ip" />
+
+  <textarea name="message" id="message" placeholder="Your Message" cols="30" rows="10" required></textarea>
+  <button type="submit" class="submitbtn">send</button>
+  <p id="response-message"></p>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("aDQX_QHLdDCFtgldP"); // بدّل ب public key ديالك
+
+  const form = document.getElementById("contact-form");
+  const responseMessage = document.getElementById("response-message");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // ⏱️ Format 24h GMT+1
+    const now = new Date();
+    const offset = 1; // GMT+1
+    now.setHours(now.getUTCHours() + offset);
+    const formattedTime = now.toLocaleString("en-GB", {
+      timeZone: "Etc/GMT-1",
+      hour12: false,
+    });
+
+    try {
+  const response = await fetch("https://ipinfo.io/json?token=3fc9e1717ef217");
+  const data = await response.json();
+  city = data.city || "Unknown";
+  country = data.country || "Unknown";
+  ip = data.ip || "Unknown";
+} catch (err) {
+  console.warn("IP API Failed:", err);
+}
+
+
+    // ⛳ تعمير البيانات
+    document.getElementById("time").value = formattedTime;
+    document.getElementById("user_location").value = `${city}, ${country}`;
+    document.getElementById("user_ip").value = ip;
+
+    // 📩 إعداد الإرسال
+    const inputFields = {
+      user_name: document.getElementById("name").value,
+      user_email: document.getElementById("email").value,
+      user_phone: document.getElementById("phone").value,
+      time: formattedTime,
+      user_location: `${city}, ${country}`,
+      user_ip: ip,
+      message: document.getElementById("message").value,
+    };
+
+    // ✉️ إرسال البريد
+    emailjs.send("service_hzx9g2i", "template_c7fbp3m", inputFields)
+      .then(() => {
+        responseMessage.textContent = "✅ تم إرسال الرسالة بنجاح!";
+        responseMessage.className = "success";
+        form.reset();
+      })
+      .catch((error) => {
+        responseMessage.textContent = "❌ وقعات شي مشكلة! جرب مرة أخرى.";
+        responseMessage.className = "error";
+        console.error("EmailJS Error:", error);
+      });
+  });
+</script>
+
+
+      </div>
+    </div>
+  <!-- End Contact -->
+    <!-- Start Footer -->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <h4>&copy; Copyright 2024 By Mohammed Mriss </h4>
+                
+            </div>
+            
+        </div>
+    </footer>
+    <!-- End Footer --><script>
+    /* هنا نجيب العنصرين الأساسيين: أيقونة القائمة والقائمة نفسها */
+    let menu = document.querySelector('i.menu');
+    let bar = document.querySelector('.bar');
+
+    /* لما نضغط على أيقونة القائمة (☰) */
+    menu.onclick = function () {
+        /* نضيف أو نزيل كلاس 'active' من القائمة */
+        bar.classList.toggle('active');
+    };
+
+    /* لما نضغط على أي شيء داخل القائمة */
+    bar.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+            /* نزيل كلاس 'active' من كل الروابط */
+            let links = document.querySelectorAll('.bar a');
+            links.forEach(function(link) {
+                link.classList.remove('active');
+            });
+            
+            /* نضيف كلاس 'active' للرابط اللي نقرنا عليه */
+            e.target.classList.add('active');
+            
+            /* نزيل كلاس 'active' من القائمة (نخفيها) */
+            bar.classList.remove('active');
+        }
+    });
+
+    // استعمال Intersection Observer لمراقبة الأقسام في الصفحة
+    const sections = document.querySelectorAll('section');
+    const links = document.querySelectorAll('.bar a');
+
+    const observerOptions = {
+        root: null, // نراقب التمرير داخل الـ viewport
+        rootMargin: '0px',
+        threshold: 0.5 // يعني القسم غيكون في نصف الشاشة تقريبا
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // إذا القسم ظاهر في الشاشة بنسبة أكثر من 50% نضيف الكلاس active للرابط
+            if (entry.isIntersecting) {
+                // إزالة الكلاس active من جميع الروابط
+                links.forEach(link => link.classList.remove('active'));
+                
+                // إضافة الكلاس active للرابط المتعلق بالقسم الظاهر
+                const currentLink = document.querySelector(`.bar a[href="#${entry.target.id}"]`);
+                currentLink.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    // مراقبة كل الأقسام
+    sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html> 

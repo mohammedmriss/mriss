@@ -1,0 +1,123 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background: #292929;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.header .logo img {
+    height: 80px;
+}
+
+.header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header nav .bar {
+    list-style: none;
+    display: flex;
+}
+
+.header nav .bar li {
+    margin: 0 15px;
+}
+
+.header nav .bar li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.landing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.landing .text {
+    max-width: 600px;
+}
+
+.landing .text h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.landing .text p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.landing .image-landing img {
+    max-width: 100%;
+    height: auto;
+}
+
+.portfolio {
+    padding: 50px 0;
+}
+
+.portfolio .main-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.portfolio .images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box {
+    margin: 10px;
+    transition: transform 0.3s;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+.services {
+    background: #fff;
+    padding: 50px 0;
+}
+
+.services .srv-box {
+    text-align: center;
+    margin: 20px;
+}
+
+.services .srv-box i {
+    color: #292929;
+}
+
+.info {
+    padding: 50px 0;
+}
+
+.contact {
+    background: #292929;
+    color: #fff;
+    padding: 50px 0;
+}
+
+.contact .box-left,
+.contact .box-right {
+    width: 45%;
+    margin: 0 auto;
+}
+
+footer {
+    background: #292929;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}

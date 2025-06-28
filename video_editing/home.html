@@ -1,0 +1,536 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Normalize For Render Page -->
+    <link rel="stylesheet" href="../style/css/normalize.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awsome icons -->
+    <link rel="stylesheet" href="../style/css/all.min.css">
+    <!-- Start Style page css -->
+    <link rel="stylesheet" href="../style/css/home.css">
+
+    
+</head>
+<body>
+<!-- icons whatsapp linkdin instagram -->
+ <div class="stikicone">
+<div class="icons">
+    <a href=""><i class="fa-brands fa-facebook" ></i></a>
+    <a href="https://wa.me/message/UO4ZHMQEMLZ2B1"><i class="fa-brands fa-whatsapp" ></i></a>
+    <a href="https://www.instagram.com/mohammed_mriss_creative/"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/mohammed-mriss/"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://www.behance.net/mohammedmriss"><i class="fa-brands fa-behance"></i></a>
+    <a href="https://www.pinterest.com/mohammedmriss/"><i class="fa-brands fa-pinterest"></i></a>
+    
+</div>
+</div>
+<!-- Carte Profil -->
+<div class="profile-card">
+    <button class="close-btn" id="closeBtn">&times;</button>
+    
+    <!-- Section gauche (Profil + QR) -->
+    <div class="left-section">
+        <img src="../style/img/imglo (1).jpeg" alt="Photo de profil" class="profile-img">
+        <h2 class="profile-name">Mohammed Mriss</h2>
+        <p class="profile-title">Multimedia Developer</p>
+        
+        <div class="qr-container">
+            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?data=https://wa.me/212612291629&size=150x150" alt="WhatsApp QR">
+            <p class="qr-text">Contact me on WhatsApp</p>
+        </div>
+    </div>
+    
+    <!-- Section droite (About) -->
+    <div class="right-section">
+        <div class=""></div>
+        <div class="" style="padding-left: 30px; padding-right: 30px;">
+        <h1 class="section-title" style="color: black; ">Say Hi on WhatsApp!</h1>
+        <p class="about-text">
+            Hello! I’m Mohamed, a specialist in multimedia development, which includes graphic design, web development, and video editing. I use these skills to help people achieve their goals in a smart and effective way.
+            Do you have any questions or need assistance? Scan the QR code to connect with me directly on WhatsApp. I’m here to chat and make things easier for you!
+
+
+        </p>
+        </div>
+    
+    </div>
+</div>
+
+<script>
+    // Générer le QR code WhatsApp
+    function generateQRCode() {
+        const phoneNumber = "212612291629"; // Remplacez par votre numéro
+        const whatsappUrl = `https://wa.me/${phoneNumber}`;
+        const qrSize = 120;
+        const qrCodeUrl = `https://chart.googleapis.com/chart?cht=qr&chs=${qrSize}x${qrSize}&chl=${encodeURIComponent(whatsappUrl)}`;
+        
+        document.getElementById('whatsappQr').innerHTML = `<img src="${qrCodeUrl}" alt="QR Code WhatsApp">`;
+    }
+    
+    // Fermer la carte
+    document.getElementById('closeBtn').addEventListener('click', function() {
+        document.querySelector('.profile-card').style.display = 'none';
+    });
+    
+    // Générer le QR code au chargement
+    document.addEventListener('DOMContentLoaded', generateQRCode);
+</script>
+        
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="style/video/" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+   
+      <!-- Start header -->
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="../index.html"><img src="../style/img/logomo.png" alt="" style="height: 80px;"></a>
+        </div>
+        <nav>
+            <i class="fas fa-bars menu"></i>
+            <ul class="bar">
+                <li><a href="../index.html" class="active">Home</a></li>
+                <li><a href="#Projects">Projects</a></li>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Resum">Resum</a></li>
+                <li><a href="#Contact">Contact</a></li>
+                
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<!-- End header -->
+
+    <!-- Start Portfolio -->
+    <div class="portfolio" id="Projects" style="padding-top: 150px;">
+        <div class="container">
+            <div class="main-heading">
+                <h2>video editing</h2>
+                <!-- <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p> -->
+            </div>
+            
+           
+              
+              <script>
+                const btns = document.querySelectorAll('.shuffle li button');
+              
+                btns.forEach((button) => {
+                  button.addEventListener('click', () => {
+                    // نحيد الكلاس active من جميع العناصر
+                    btns.forEach((btn) => {
+                      btn.parentElement.classList.remove('active');
+                    });
+              
+                    // نزيد الكلاس active للعنصر اللي تكليكات عليه
+                    button.parentElement.classList.add('active');
+              
+                    // هنا تقدر تزيد الكود ديال التصنيف حسب data-name
+                    console.log('Category selected:', button.getAttribute('data-name'));
+                  });
+                });
+              </script>
+              
+    
+            <div class="images-container">
+                <!-- Les images seront ajoutées dynamiquement par JavaScript -->
+            </div>
+
+            <!-- بوضع زر "More" داخل .container -->
+            <button id="loadMore" class="more">More</button>
+
+         
+        </div>
+
+        <style>
+          .portfolio .container .more {
+    background-color: #fff;
+    color: #292929;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: inline-block; /* inline-block باش يتحكم في الحجم ويكون هو المركزي */
+    margin: 20px auto;     /* auto باش يوسط */
+    text-transform: uppercase;
+    border-radius: 13px;
+    border: none;
+}
+
+        </style>
+        
+        <!-- <button href="#" id="loadMore" class="more">More</button> -->
+
+        <script>
+    // العناصر الأساسية
+    const videosContainer = document.querySelector(".images-container");
+    const loadMoreBtn = document.getElementById("loadMore");
+    const videoExtensions = ["mp4", "mov", "avi", "mkv", "wmv", "flv", "webm", "mpeg", "3gp", "ogv", "m4v"];
+    let currentShown = 8;
+
+    // دالة للتحقق من وجود الفيديو
+    async function checkVideoExists(url) {
+        return new Promise((resolve) => {
+            const video = document.createElement('video');
+            video.addEventListener('canplay', () => resolve(true));
+            video.addEventListener('error', () => resolve(false));
+            video.src = url;
+        });
+    }
+
+    // دالة لتحميل الفيديوهات
+    async function loadVideos() {
+        videosContainer.innerHTML = "";
+        let foundVideos = 0;
+        let hasVideos = false;
+
+        try {
+            for (let i = 1; i <= 50; i++) {
+                for (const ext of videoExtensions) {
+                    const path = `video/video editing (${i}).${ext}`;
+                    if (await checkVideoExists(path)) {
+                        foundVideos++;
+                        hasVideos = true;
+                        const box = document.createElement("div");
+                        box.className = "box";
+                        const isHidden = foundVideos > currentShown;
+                        box.innerHTML = `
+                          <div class="video-container ${isHidden ? 'extra-videos' : ''}" 
+                               style="display: ${isHidden ? 'none' : 'block'}">
+                              <video controls width="300px" height="225px"  poster="images/cover${i}.png">
+                                  <source src="${path}" type="video/${ext}">
+                                  المتصفح ديالك ماكيدعمش الفيديو
+                              </video>
+                          </div>
+                          <div class="caption" style=" background-color: transparent; border:none;">
+                              
+                              <p style="font-weight:bold; color:white; "> project ${i}</p>
+                          </div>
+                        `;
+                        videosContainer.appendChild(box);
+                        break;
+                    }
+                }
+            }
+            
+            if (!hasVideos) {
+                videosContainer.innerHTML = `
+                    <div class="no-videos">
+                        <p>ما لقيتش أي فيديو فالمجلد video/</p>
+                        <p>الرجاء التحقق من:</p>
+                        <ul>
+                            <li>المسار ديال الملفات صحيح</li>
+                            <li>السمية ديال الفيديوهات تكون بالشكل: video editing (1).mp4</li>
+                            <li>الملفات عندها الصلاحيات اللازمة</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            loadMoreBtn.style.display = foundVideos > currentShown ? "block" : "none";
+        } catch (error) {
+            console.error("خطا فتحميل الفيديوهات:", error);
+            videosContainer.innerHTML = `<p class="error">خطا فتحميل الفيديوهات: ${error.message}</p>`;
+        }
+    }
+
+    // دالة زر تحميل المزيد
+    loadMoreBtn.addEventListener("click", function() {
+        const hiddenVideos = document.querySelectorAll(".extra-videos");
+        const batch = Array.from(hiddenVideos).slice(0, 8);
+        batch.forEach(video => {
+            video.style.display = "block";
+            video.classList.remove("extra-videos");
+        });
+        this.style.display = document.querySelectorAll(".extra-videos").length > 0 ? "block" : "none";
+    });
+
+    // تحميل الفيديوهات عند فتح الصفحة
+    window.addEventListener("load", loadVideos);
+</script>
+
+        <!-- <script>
+    const imagesContainer = document.querySelector(".images-container");
+    const loadMoreBtn = document.getElementById("loadMore");
+    const imageExtensions = ["heic", "webp",  "jpg", "png", "jpeg", "gif", "bmp", "tiff", "svg", "ico"];
+    let currentShown = 8;
+
+    // طريقة أفضل للتحقق من الصور
+    function checkImageExists(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
+        });
+    }
+
+    async function loadSocialMediaImages() {
+        imagesContainer.innerHTML = "";
+        let foundImages = 0;
+        let hasImages = false;
+
+        // نستخدم try/catch للتعامل مع الأخطاء
+        try {
+            for (let i = 1; i <= 50; i++) {
+                for (const ext of imageExtensions) {
+                  
+                    const paths = [
+                        `img/sociale media (${i}).${ext}`,
+                    ];
+                    
+                    for (const path of paths) {
+                        if (await checkImageExists(path)) {
+                            foundImages++;
+                            hasImages = true;
+                            
+                            const box = document.createElement("div");
+                            box.className = "box";
+                            const isHidden = foundImages > currentShown;
+                            
+                            box.innerHTML = `
+                                <div class="img ${isHidden ? 'extra-images' : ''}" 
+                                     style="display: ${isHidden ? 'none' : 'block'}">
+                                    <img src="${path}" alt="video editing Project ${i}" 
+                                         loading="lazy">
+                                </div>
+                                <div class="caption">
+                                    <h4>video editing</h4>
+                                    <p>Project ${i}</p>
+                                </div>
+                            `;
+                            
+                            imagesContainer.appendChild(box);
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            // إظهار رسالة إذا لم توجد صور
+            if (!hasImages) {
+                imagesContainer.innerHTML = `
+                    <div class="no-images">
+                        <p>No images found in video_editing/img/ directory</p>
+                        <p>Please check:</p>
+                        <ul>
+                            <li>Folder path is correct</li>
+                            <li>Images are named like: video_editing (1).jpg</li>
+                            <li>Files have proper permissions</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            loadMoreBtn.style.display = foundImages > currentShown ? "block" : "none";
+            
+        } catch (error) {
+            console.error("Error loading images:", error);
+            imagesContainer.innerHTML = `<p class="error">Error loading images: ${error.message}</p>`;
+        }
+    }
+
+    loadMoreBtn.addEventListener("click", function() {
+        const hiddenImages = document.querySelectorAll(".extra-images");
+        const batch = Array.from(hiddenImages).slice(0, 8);
+        
+        batch.forEach(img => {
+            img.style.display = "block";
+            img.classList.remove("extra-images");
+        });
+
+        this.style.display = document.querySelectorAll(".extra-images").length > 0 ? "block" : "none";
+    });
+
+    // نستخدم load event بدلاً من DOMContentLoaded لضمان تحميل كل العناصر
+    window.addEventListener("load", loadSocialMediaImages);
+</script> -->
+           
+            
+    </div>
+    <!-- End Portfolio -->
+
+    <!-- Start Contact -->
+    <div class="contact" id="Contact">
+      <div class="main-heading">
+          <h2>Contact Me</h2>
+      </div>
+      <div class="container">
+          <div class="box-left">
+              <h4>Our social Links</h4>
+              <p style="color: white;">
+                  here you will find some information about us such as email ,
+                   phone number , social networking sites . do net forget to follow us.
+              </p>
+              <span style="color: white;">mohammedmriss.officielle@gmail.com</span>
+              <span style="color: white;">+212612291629</span>
+              <div class="icons">
+                <a href=""><i class="fa-brands fa-facebook" ></i></a>
+                <a href="https://wa.me/message/UO4ZHMQEMLZ2B1"><i class="fa-brands fa-whatsapp" ></i></a>
+                <a href="https://www.instagram.com/mohammed_mriss_creative/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/mohammed-mriss/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://www.behance.net/mohammedmriss"><i class="fa-brands fa-behance"></i></a>
+                <a href="https://www.pinterest.com/mohammedmriss/"><i class="fa-brands fa-pinterest"></i></a>
+              </div>
+          </div>
+          <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+          <script>
+            (function(){
+              emailjs.init("aDQX_QHLdDCFtgldP"); // ← بدّل بـ Public Key ديالك
+            })();
+
+            
+                    
+          </script>
+<form id="contact-form" class="box-right">
+  <h4>Contact Me</h4>
+  <input type="text" id="name" placeholder="Full Name" required>
+  <input type="email" id="email" placeholder="Your Mail" required>
+  <input type="text" id="phone" placeholder="Your Phone" required>
+  
+  <input type="hidden" id="time" name="time" />
+<input type="hidden" id="user_location" name="user_location" />
+<input type="hidden" id="user_ip" name="user_ip" />
+
+  <textarea name="message" id="message" placeholder="Your Message" cols="30" rows="10" required></textarea>
+  <button type="submit" class="submitbtn">send</button>
+  <p id="response-message"></p>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("aDQX_QHLdDCFtgldP"); // بدّل ب public key ديالك
+
+  const form = document.getElementById("contact-form");
+  const responseMessage = document.getElementById("response-message");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // ⏱️ Format 24h GMT+1
+    const now = new Date();
+    const offset = 1; // GMT+1
+    now.setHours(now.getUTCHours() + offset);
+    const formattedTime = now.toLocaleString("en-GB", {
+      timeZone: "Etc/GMT-1",
+      hour12: false,
+    });
+
+    try {
+  const response = await fetch("https://ipinfo.io/json?token=3fc9e1717ef217");
+  const data = await response.json();
+  city = data.city || "Unknown";
+  country = data.country || "Unknown";
+  ip = data.ip || "Unknown";
+} catch (err) {
+  console.warn("IP API Failed:", err);
+}
+
+
+    // ⛳ تعمير البيانات
+    document.getElementById("time").value = formattedTime;
+    document.getElementById("user_location").value = `${city}, ${country}`;
+    document.getElementById("user_ip").value = ip;
+
+    // 📩 إعداد الإرسال
+    const inputFields = {
+      user_name: document.getElementById("name").value,
+      user_email: document.getElementById("email").value,
+      user_phone: document.getElementById("phone").value,
+      time: formattedTime,
+      user_location: `${city}, ${country}`,
+      user_ip: ip,
+      message: document.getElementById("message").value,
+    };
+
+    // ✉️ إرسال البريد
+    emailjs.send("service_hzx9g2i", "template_c7fbp3m", inputFields)
+      .then(() => {
+        responseMessage.textContent = "✅ تم إرسال الرسالة بنجاح!";
+        responseMessage.className = "success";
+        form.reset();
+      })
+      .catch((error) => {
+        responseMessage.textContent = "❌ وقعات شي مشكلة! جرب مرة أخرى.";
+        responseMessage.className = "error";
+        console.error("EmailJS Error:", error);
+      });
+  });
+</script>
+
+
+      </div>
+    </div>
+  <!-- End Contact -->
+    <!-- Start Footer -->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <h4>&copy; Copyright 2024 By Mohammed Mriss </h4>
+                
+            </div>
+            
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <script>
+    let menu = document.querySelector('i.menu');
+    let bar = document.querySelector('.bar');
+
+    menu.onclick = function () {
+        bar.classList.toggle('active');
+    };
+
+    const sections = document.querySelectorAll('section');
+    const links = document.querySelectorAll('.bar a');
+
+    bar.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+            const href = e.target.getAttribute('href');
+
+            // إذا ضغط على Home
+            if (href === "#Home") {
+                window.location.href = "../index.html"; // توجيه للصفحة الرئيسية
+                return; // نوقف الكود هنا
+            }
+
+            // نكمل الكود العادي لباقي الروابط
+            links.forEach(function(link) {
+                link.classList.remove('active');
+            });
+
+            e.target.classList.add('active');
+            bar.classList.remove('active');
+        }
+    });
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                links.forEach(link => link.classList.remove('active'));
+                const currentLink = document.querySelector(`.bar a[href="#${entry.target.id}"]`);
+                if (currentLink) currentLink.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html> 
