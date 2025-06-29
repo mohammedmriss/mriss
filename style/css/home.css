@@ -267,42 +267,35 @@ body {
     font-weight: 900;
     margin-right: 10px;
 
-}
-@media (max-width:1011px) {
-    .landing .container .text h1 {
-        font-size: 40px;
-    }
-    .landing .image-landing img {
-        max-width: 100%;
-        
-    }
-}
-
-@media (max-width:767px) {
+}@media (max-width: 767px) {
     .landing .container {
         display: flex;
         flex-direction: column-reverse;
-        
     }
+
     .landing .container .text {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
-    .landing .container ul li {
-        background-color: var(--color-black);
-    }
-    .landing .container .text .btn {
-        padding: 10px 20px;
-        width: fit-content;
-    }
-    .landing .container img {
-        
-        max-width: 100%;
 
+    .landing .container .text a.btn {
+        width: 90%;
+        max-width: 300px;
+        font-size: 16px;
+        text-align: center;
+        word-break: break-word;
+        padding: 10px 15px;
+    }
+
+    .landing .container img {
+        max-width: 100%;
+         border-radius: 50%;
+        object-fit: cover;
     }
 }
+
 
 /* End Landing */
 
@@ -1577,10 +1570,10 @@ body {
   color: #25D366;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
   .profile-card {
     flex-direction: column;
-    width: 90%;
+    max-height: 90vh; /* تبقى في حدود الشاشة */
   }
 
   .left-section,
@@ -1589,6 +1582,10 @@ body {
   }
 
   .left-section {
+    padding: 20px;
+  }
+
+  .right-section {
     padding: 20px;
   }
 
