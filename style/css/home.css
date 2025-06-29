@@ -60,21 +60,30 @@
     text-decoration: none;
     list-style: none;
     color: var(--color-white);
+    
 }
+
 
 body {
     font-family: sans-serif;
     background-color: var(--color-black);
     scroll-behavior: smooth;
 }
-
+body {
+    font-family: sans-serif;
+    background-color: var(--color-black);
+    scroll-behavior: smooth;
+    position: static; /* تغيير من relative إلى static */
+    overflow-x: hidden;
+    width: 100%;
+}
 .container {
     width: 100%;
     padding-left: 15px;
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
-    max-width: 100%;
+    max-width: 100% ;
 }
 
 /* Small */
@@ -156,6 +165,9 @@ body {
 @media (max-width:666px){
     .header .container nav ul {
         display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
 
     }
     .header .container nav .menu.links + ul {
@@ -188,6 +200,13 @@ body {
 /* Start Landing */
 .landing {
     padding-top: 150px;
+}
+.landing {
+    padding-top: 150px;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+    margin: 0 auto;
 }
 .landing .container {
     display: grid;
@@ -563,32 +582,53 @@ body {
 /* .portfolio {
     padding-top: 100px;
     padding-bottom: 100px;
-} */
-.portfolio .shuffle {
-    margin-top: 50px;
+} *//* تنسيقات أساسية للقائمة */
+.shuffle {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-}
-.portfolio .shuffle  {
+    gap: 10px;
+    padding: 0;
+    margin: 30px 0;
     list-style: none;
 }
-.portfolio .shuffle  li{
-     border-radius: 10px;
+
+.shuffle li {
+    margin: 0;
+    padding: 0;
 }
 
-.portfolio .shuffle li.active {
-    background-color: #777;
+.shuffle button {
+    background: #383737;
     color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
 }
-.portfolio .shuffle li button {
-    background: none;
-    border: none; 
-    background: none;
-    border:none;
-   
-    margin: auto;
-    /* اختيارية إلا بغيتي تحيد حتى border */
-  }
+
+.shuffle button:hover {
+    background: #555;
+}
+
+.shuffle li.active button {
+    background: white; /* اللون الأخضر الخاص بك */
+    color: #383737;
+}
+
+/* للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .shuffle {
+        gap: 5px;
+    }
+    
+    .shuffle button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
 .portfolio .images-container {
     margin-top: 60px;
     display: flex;
@@ -623,7 +663,7 @@ body {
 }
 @media (min-width: 1199px)  {
     .portfolio .images-container .box {
-        flex-basis: 25%;
+        flex-basis: 30%;
     }
 }
 .portfolio .images-container .box img {
@@ -1383,17 +1423,6 @@ footer .container .icons a{
 body {
   font-family: sans-serif;
   position: relative;
-}
-
-/* ====== BACKGROUND VIDEO ====== */
-video#bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
 }
 
 /* ====== STICKY ICON BAR ====== */
