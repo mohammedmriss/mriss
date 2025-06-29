@@ -195,6 +195,7 @@ body {
     gap: 5%;
     position: relative;
 }
+
 .landing .container .image-landing {
     display: flex;
     justify-content: center;
@@ -1372,67 +1373,205 @@ footer .container .icons a{
     font-size: 22px;
 }
 /* End footer */
+/* ====== GLOBAL RESET ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: sans-serif;
+  position: relative;
+}
 
- .stikicone .icons {
-    position: absolute;
-    color: #555;
-    bottom: 0;
-    text-align: center;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(50, 50, 50, 0.9);
-    padding: 5px 30px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    position: fixed;
-    z-index: 3;
+/* ====== BACKGROUND VIDEO ====== */
+video#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* ====== STICKY ICON BAR ====== */
+.stikicone .icons {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #555;
+  text-align: center;
+  background-color: rgba(50, 50, 50, 0.9);
+  padding: 5px 30px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  z-index: 3;
 }
 
 .stikicone .icons a {
-    padding-left: 15px;
-    padding-right: 15px;
+  padding: 0 15px;
 }
 
 .stikicone .icons i {
-    font-size: 30px;
-    margin-right: 5px;
+  font-size: 30px;
+  margin-right: 5px;
 }
 
-/* Media Query for smaller screens */
 @media (max-width: 768px) {
-    .stikicone .icons {
-        bottom: 10px; /* خفض المسافة من الأسفل */
-        padding: 5px 20px; /* تقليص الـ padding */
-    }
+  .stikicone .icons {
+    bottom: 10px;
+    padding: 5px 20px;
+  }
 
-    .stikicone .icons i {
-        font-size: 25px; /* تصغير الأيقونات شوية */
-    }
+  .stikicone .icons i {
+    font-size: 25px;
+  }
 
-    .stikicone .icons a {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
+  .stikicone .icons a {
+    padding: 0 10px;
+  }
 }
 
-/* Media Query for very small screens (e.g., mobile phones in portrait mode) */
 @media (max-width: 480px) {
-    .stikicone .icons {
-        padding: 5px 15px; /* تقليص أكبر للـ padding */
-    }
+  .stikicone .icons {
+    padding: 5px 15px;
+  }
 
-    .stikicone .icons i {
-        font-size: 20px; /* تقليص الأيقونات أكثر */
-    }
+  .stikicone .icons i {
+    font-size: 20px;
+  }
 
-    .stikicone .icons a {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
+  .stikicone .icons a {
+    padding: 0 8px;
+  }
 }
- .extra-images {
-  display: none; /* Hide the extra images initially */
+
+/* ====== PROFILE CARD (POPUP) ====== */
+.profile-card {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 700px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.left-section {
+  width: 40%;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.right-section {
+  width: 60%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-section h1 {
+  color: #25D366;
+  font-size: 1.3em;
+  margin-bottom: 15px;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  margin-bottom: 20px;
+}
+
+.profile-name {
+  font-size: 1.6em;
+  margin: 0 0 5px 0;
+  text-align: center;
+}
+
+.profile-title {
+  font-size: 1em;
+  opacity: 0.9;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.qr-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.qr-code {
+  width: 120px;
+  height: 120px;
+  background-color: white;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.qr-text {
+  font-size: 0.9em;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.about-text {
+  line-height: 1.6;
+  color: #555;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #25D366;
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
+  }
+
+  .left-section {
+    padding: 20px;
+  }
+
+  .profile-img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* ====== PORTFOLIO IMAGES + BUTTON ====== */
+.extra-images {
+  display: none;
 }
 
 button {
@@ -1448,168 +1587,15 @@ button {
 button:hover {
   background-color: #45a049;
 }
- .profile-card {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 700px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            display: flex;
-            overflow: hidden;
-            z-index: 1000;
-        }
-        
-        .left-section {
-            width: 40%;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        
-        .right-section {
-            width: 60%;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;     /* نلصقو للفوق */
-                     /* باش يجي قريب للفوق ولكن ماشي ملصق */
-        }
-        .right-section h1 {
-            font:  weight;       /* باش يجي قريب للفوق ولكن ماشي ملصق */
-        }
-        
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            margin-bottom: 20px;
-        }
-        
-        .profile-name {
-            font-size: 1.6em;
-            margin: 0 0 5px 0;
-            text-align: center;
-        }
-        
-        .profile-title {
-            font-size: 1em;
-            opacity: 0.9;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .qr-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .qr-code {
-            width: 120px;
-            height: 120px;
-            background-color: white;
-            padding: 8px;
-            border-radius: 8px;
-        }
-        
-        .qr-text {
-            font-size: 0.9em;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        
-        .section-title {
-            color: #25D366;
-            font-size: 1.3em;
-            margin-bottom: 15px;
-        }
-        
-        .about-text {
-            line-height: 1.6;
-            color: #555;
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 1.5em;
-            cursor: pointer;
-            color: #25D366;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .profile-card {
-                flex-direction: column;
-                width: 90%;
-            }
-            
-            .left-section, .right-section {
-                width: 100%;
-            }
-            
-            .left-section {
-                padding: 20px;
-            }
-            
-            .profile-img {
-                width: 80px;
-                height: 80px;
-            }
-        }
-          * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-    
-        body {
-          font-family: sans-serif;
-          position: relative;
-        }
-    
-        video#bg-video {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          z-index: -1;
-        }
-    
-        .content {
-          position: relative;
-          z-index: 1;
-          color: white;
-          padding: 100px 20px;
-          text-align: center;
-        }
-    
-        .section {
-          height: 100vh;
-        }
-        /* Popup Background */
+
+/* ====== POPUP OVERLAY (NOT YET USED) ====== */
 .popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
