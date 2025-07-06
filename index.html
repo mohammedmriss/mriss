@@ -90,34 +90,43 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const loaderWrapper = document.getElementById('loader-wrapper');
-    const minDisplayTime = 1000; // أقل مدة للعرض (1 ثانية)
-    const startTime = performance.now();
+document.addEventListener('DOMContentLoaded', function () {
+  const loaderWrapper = document.getElementById('loader-wrapper');
+  const minDisplayTime = 1000; // أقل مدة للعرض (ms)
+  const startTime = performance.now();
 
-    function hideLoader() {
-        const elapsed = performance.now() - startTime;
-        const remaining = minDisplayTime - elapsed;
+  // واش سبق وتحطات علامة التحميل ف localStorage؟
+  const loaderAlreadyShown = localStorage.getItem("loaderShown") === "true";
 
-        if (remaining > 0) {
-            setTimeout(() => {
-                hideLoader();
-            }, remaining);
-        } else {
-            loaderWrapper.style.opacity = '0';
-            setTimeout(() => {
-                loaderWrapper.style.display = 'none';
-            }, 500);
-        }
+  // إلا كان داك الشي سبق تشاف، نحيد اللودر مباشرة
+  if (loaderAlreadyShown) {
+    loaderWrapper.style.display = 'none';
+    return;
+  }
+
+  function hideLoader() {
+    const elapsed = performance.now() - startTime;
+    const remaining = minDisplayTime - elapsed;
+
+    if (remaining > 0) {
+      setTimeout(hideLoader, remaining);
+    } else {
+      loaderWrapper.style.opacity = '0';
+      setTimeout(() => {
+        loaderWrapper.style.display = 'none';
+        localStorage.setItem("loaderShown", "true"); // نعلّم بلي راه تفرج
+      }, 500);
     }
+  }
 
-    // الانتظار حتى اكتمال تحميل كل المحتوى
-    window.addEventListener('load', hideLoader);
+  // ننتظر حتى يكمل تحميل كلشي
+  window.addEventListener('load', hideLoader);
 
-    // نسخة احتياطية إذا لم يعمل event load
-    setTimeout(hideLoader, 5000); // أقصى مدة 5 ثواني
+  // نسخة احتياطية إلى ما طراش event load
+  setTimeout(hideLoader, 5000);
 });
-  </script>
+</script>
+
 <!-- icons whatsapp linkdin instagram -->
  <div class="stikicone">
 <div class="icons">
