@@ -277,36 +277,35 @@
         </div>
         
         <button href="#" id="loadMore" class="more">More</button>
-        <script>
+       <script>
 // المتغيرات الأساسية
 const buttons = document.querySelectorAll(".shuffle button");
 const imagesContainer = document.querySelector(".images-container");
 const imageExtensions = ["jpg", "png", "jpeg", "gif", "webp"];
-const categories = ["social_media", "print", "web", "motion","video_editing", "thumbnail", "branding"];
+const categories = ["social_media", "print", "web", "motion", "video_editing", "thumbnail", "branding"];
 let currentShown = 8;
 
 // دالة تحميل الصور
 async function loadCategory(selectedCategory) {
   imagesContainer.innerHTML = "";
+  document.getElementById("loadMore").style.display = "none";
   let imageCount = 0;
   
-  // تحديد التصنيفات المطلوبة
   const catsToLoad = (selectedCategory === "all") 
     ? categories 
     : [selectedCategory];
 
-  // البحث في كل تصنيف
   for (const cat of catsToLoad) {
     let i = 1;
-    let foundImages = true;
-    
-    // البحث عن الصور حتى الرقم 100 (يمكن زيادة الرقم حسب الحاجة)
-    while (foundImages && i <= 100) {
+    let notFoundCount = 0;
+
+    while (i <= 100 && notFoundCount < 5) {
       const imageFound = await tryImageFormats(cat, i, selectedCategory);
-      
+
       if (!imageFound) {
-        foundImages = false;
+        notFoundCount++;
       } else {
+        notFoundCount = 0;
         i++;
       }
     }
@@ -315,30 +314,33 @@ async function loadCategory(selectedCategory) {
   updateLoadMoreButton();
 }
 
-// دالة تجربة صيغ الصور المختلفة
+// تجربة جميع صيغ الصورة
 async function tryImageFormats(cat, index, selectedCategory) {
   let found = false;
-  
+
   for (const ext of imageExtensions) {
-    // إنشاء مسارين مختلفين للصورة
     const path1 = `${cat}/images/${cat}${index}.${ext}`;
     const path2 = `${cat}/images/${cat} (${index}).${ext}`;
-    
+
     if (await checkImageExists(path1)) {
+      console.log("Found:", path1);
       createImageBox(path1, cat, index, selectedCategory);
       found = true;
       break;
     } else if (await checkImageExists(path2)) {
+      console.log("Found:", path2);
       createImageBox(path2, cat, index, selectedCategory);
       found = true;
       break;
+    } else {
+      console.log("Not found:", path1, "or", path2);
     }
   }
-  
+
   return found;
 }
 
-// باقي الدوال كما هي في السكريبت السابق
+// التحقق من وجود الصورة
 function checkImageExists(url) {
   return new Promise((resolve) => {
     const img = new Image();
@@ -348,13 +350,14 @@ function checkImageExists(url) {
   });
 }
 
+// إنشاء صندوق الصورة
 function createImageBox(path, cat, index, selectedCategory) {
   const box = document.createElement("div");
   box.className = "box";
   
   const isHidden = document.querySelectorAll(".box").length >= currentShown;
   const hiddenClass = isHidden ? "extra-images" : "";
-  
+
   box.innerHTML = `
     <div class="img ${hiddenClass}" style="${isHidden ? 'display:none;' : ''}">
       <img src="${path}" alt="${cat}" loading="lazy">
@@ -365,14 +368,15 @@ function createImageBox(path, cat, index, selectedCategory) {
       </div>
     ` : ''}
   `;
-  
-  box.addEventListener('click', () => {
+
+  box.addEventListener("click", () => {
     window.location.href = `${cat}/home.html`;
   });
-  
+
   imagesContainer.appendChild(box);
 }
 
+// تحديث زر عرض المزيد
 function updateLoadMoreButton() {
   setTimeout(() => {
     const hiddenImages = document.querySelectorAll(".extra-images");
@@ -381,7 +385,7 @@ function updateLoadMoreButton() {
   }, 100);
 }
 
-// الأحداث
+// حدث الضغط على الأزرار
 buttons.forEach((btn) => {
   btn.addEventListener("click", () => {
     buttons.forEach((b) => b.parentElement.classList.remove("active"));
@@ -398,18 +402,19 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // زر عرض المزيد
-document.getElementById("loadMore").addEventListener("click", function() {
+document.getElementById("loadMore").addEventListener("click", function () {
   const hiddenImages = document.querySelectorAll(".extra-images");
   const toShow = Math.min(8, hiddenImages.length);
-  
+
   for (let i = 0; i < toShow; i++) {
     hiddenImages[i].style.display = "block";
     hiddenImages[i].classList.remove("extra-images");
   }
-  
+
   updateLoadMoreButton();
 });
 </script>
+
            
             
     </div>
