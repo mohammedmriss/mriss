@@ -90,43 +90,34 @@
   </div>
 
   <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const loaderWrapper = document.getElementById('loader-wrapper');
-  const minDisplayTime = 1000; // أقل مدة للعرض (ms)
-  const startTime = performance.now();
+    document.addEventListener('DOMContentLoaded', function() {
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    const minDisplayTime = 1000; // أقل مدة للعرض (1 ثانية)
+    const startTime = performance.now();
 
-  // واش سبق وتحطات علامة التحميل ف localStorage؟
-  const loaderAlreadyShown = localStorage.getItem("loaderShown") === "true";
+    function hideLoader() {
+        const elapsed = performance.now() - startTime;
+        const remaining = minDisplayTime - elapsed;
 
-  // إلا كان داك الشي سبق تشاف، نحيد اللودر مباشرة
-  if (loaderAlreadyShown) {
-    loaderWrapper.style.display = 'none';
-    return;
-  }
-
-  function hideLoader() {
-    const elapsed = performance.now() - startTime;
-    const remaining = minDisplayTime - elapsed;
-
-    if (remaining > 0) {
-      setTimeout(hideLoader, remaining);
-    } else {
-      loaderWrapper.style.opacity = '0';
-      setTimeout(() => {
-        loaderWrapper.style.display = 'none';
-        localStorage.setItem("loaderShown", "true"); // نعلّم بلي راه تفرج
-      }, 500);
+        if (remaining > 0) {
+            setTimeout(() => {
+                hideLoader();
+            }, remaining);
+        } else {
+            loaderWrapper.style.opacity = '0';
+            setTimeout(() => {
+                loaderWrapper.style.display = 'none';
+            }, 500);
+        }
     }
-  }
 
-  // ننتظر حتى يكمل تحميل كلشي
-  window.addEventListener('load', hideLoader);
+    // الانتظار حتى اكتمال تحميل كل المحتوى
+    window.addEventListener('load', hideLoader);
 
-  // نسخة احتياطية إلى ما طراش event load
-  setTimeout(hideLoader, 5000);
+    // نسخة احتياطية إذا لم يعمل event load
+    setTimeout(hideLoader, 5000); // أقصى مدة 5 ثواني
 });
-</script>
-
+  </script>
 <!-- icons whatsapp linkdin instagram -->
  <div class="stikicone">
 <div class="icons">
@@ -245,183 +236,95 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h2>Projects</h2>
                 <!-- <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p> -->
             </div>
-            
-            <ul class="shuffle">
-                <li class="active"><button data-name="all">All</button></li>
-                <li><button data-name="social_media">Social Media</button></li>
-                <li><button data-name="print">Print</button></li>
-                <li><button data-name="web">Web</button></li>
-                <li><button data-name="video_editing">Video Editing</button></li>
-                <li><button data-name="thumbnail">Thumbnail</button></li>
-                <li><button data-name="branding">Branding</button></li>
-              </ul>
-              
-              <script>
-                const btns = document.querySelectorAll('.shuffle li button');
-              
-                btns.forEach((button) => {
-                  button.addEventListener('click', () => {
-                    // نحيد الكلاس active من جميع العناصر
-                    btns.forEach((btn) => {
-                      btn.parentElement.classList.remove('active');
-                    });
-              
-                    // نزيد الكلاس active للعنصر اللي تكليكات عليه
-                    button.parentElement.classList.add('active');
-              
-                    // هنا تقدر تزيد الكود ديال التصنيف حسب data-name
-                    console.log('Category selected:', button.getAttribute('data-name'));
-                  });
-                });
-              </script>
-              
-    
-            <div class="images-container">
-                <!-- Les images seront ajoutées dynamiquement par JavaScript -->
-            </div>
+            <!-- القائمة ديال التصنيفات -->
+<ul class="shuffle">
+  <li class="active"><button data-name="all">All</button></li>
+  <li><button data-name="social_media">Social Media</button></li>
+  <li><button data-name="print">Print</button></li>
+  <li><button data-name="websites">Web</button></li>
+  <li><button data-name="video_editing">Video Editing</button></li>
+  <li><button data-name="thumbnail">Thumbnail</button></li>
+  <li><button data-name="branding">Branding</button></li>
+</ul>
+
+<!-- الصور -->
+<div class="images-container">
+  <div class="box" data-category="social_media" onclick="window.location.href='social_media/home.html'">
+    <div class="img">
+      <img src="all/images/social_media.png" alt="social_media" loading="lazy">
+    </div>
+    <div class="caption"><h4>social_media</h4></div>
+  </div>
+
+  <div class="box" data-category="print" onclick="window.location.href='print/home.html'">
+    <div class="img">
+      <img src="all/images/print.png" alt="print" loading="lazy">
+    </div>
+    <div class="caption"><h4>print</h4></div>
+  </div>
+
+  <div class="box" data-category="branding" onclick="window.location.href='branding/home.html'">
+    <div class="img">
+      <img src="all/images/branding.png" alt="branding" loading="lazy">
+    </div>
+    <div class="caption"><h4>branding</h4></div>
+  </div>
+
+  <div class="box" data-category="thumbnail" onclick="window.location.href='thumbnail/home.html'">
+    <div class="img">
+      <img src="all/images/thumbnail.png" alt="thumbnail" loading="lazy">
+    </div>
+    <div class="caption"><h4>thumbnail</h4></div>
+  </div>
+
+  <div class="box" data-category="video_editing" onclick="window.location.href='video_editing/home.html'">
+    <div class="img">
+      <img src="all/images/video_editing.png" alt="video_editing" loading="lazy">
+    </div>
+    <div class="caption"><h4>video_editing</h4></div>
+  </div>
+
+  <div class="box" data-category="websites" onclick="window.location.href='websites/home.html'">
+    <div class="img">
+      <img src="all/images/websites.png" alt="websites" loading="lazy">
+    </div>
+    <div class="caption"><h4>websites</h4></div>
+  </div>
+</div>
+
+<!-- سكريبت الفيلترة -->
+<script>
+  const btns = document.querySelectorAll('.shuffle li button');
+  const boxes = document.querySelectorAll('.images-container .box');
+
+  btns.forEach((button) => {
+    button.addEventListener('click', () => {
+      // نحيد الكلاس active من جميع الأزرار
+      btns.forEach((btn) => btn.parentElement.classList.remove('active'));
+      // نضيف active للزر اللي تكليكات عليه
+      button.parentElement.classList.add('active');
+
+      const selected = button.getAttribute('data-name');
+
+      boxes.forEach((box) => {
+        const category = box.getAttribute('data-category');
+        if (selected === 'all' || category === selected) {
+          box.style.display = 'block';
+        } else {
+          box.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
 
 
 
          
         </div>
         
-        <button href="#" id="loadMore" style="display:none;" class="more">More</button>
-       <script>
-        const buttons = document.querySelectorAll(".shuffle button");
-const imagesContainer = document.querySelector(".images-container");
-const imageExtensions = ["webp", "jpg", "png", "jpeg", "gif"];
-const categories = ["social_media", "print", "web", "motion", "video_editing", "thumbnail", "branding"];
-let currentShown = 8;
-
-// IntersectionObserver لتحميل الصور غير ملي تبان فالصفحة
-const observer = new IntersectionObserver((entries, obs) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const img = entry.target;
-      img.src = img.dataset.src;
-      obs.unobserve(img);
-    }
-  });
-});
-
-async function loadCategory(selectedCategory) {
-  imagesContainer.innerHTML = "";
-  document.getElementById("loadMore").style.display = "none";
-
-  const catsToLoad = selectedCategory === "all" ? categories : [selectedCategory];
-
-  for (const cat of catsToLoad) {
-    let i = 1;
-    let notFoundCount = 0;
-
-    while (i <= 100 && notFoundCount < 5) {
-      const found = await tryImageFormats(cat, i, selectedCategory);
-      if (!found) {
-        notFoundCount++;
-      } else {
-        notFoundCount = 0;
-        i++;
-      }
-    }
-  }
-
-  updateLoadMoreButton();
-}
-
-async function tryImageFormats(cat, index, selectedCategory) {
-  for (const ext of imageExtensions) {
-    // مسار الصورة بدون تحميل مباشر (set data-src)
-    const path1 = `${cat}/images/${cat}${index}.${ext}`;
-    const path2 = `${cat}/images/${cat} (${index}).${ext}`;
-
-    if (await checkImageExists(path1)) {
-      createImageBox(path1, cat, index, selectedCategory);
-      return true;
-    }
-    if (await checkImageExists(path2)) {
-      createImageBox(path2, cat, index, selectedCategory);
-      return true;
-    }
-  }
-  return false;
-}
-
-function checkImageExists(url) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-}
-
-function createImageBox(path, cat, index, selectedCategory) {
-  const box = document.createElement("div");
-  box.className = "box";
-
-  const isHidden = document.querySelectorAll(".box").length >= currentShown;
-  const hiddenClass = isHidden ? "extra-images" : "";
-
-  box.innerHTML = `
-    <div class="img ${hiddenClass}" style="${isHidden ? "display:none;" : ""}">
-      <img data-src="${path}" alt="${cat}" loading="lazy" />
-    </div>
-    ${selectedCategory === "all" ? `<div class="caption"><h4>${cat}</h4></div>` : ""}
-  `;
-
-  box.addEventListener("click", () => {
-    window.location.href = `${cat}/home.html`;
-  });
-
-  imagesContainer.appendChild(box);
-
-  // بدّل الصورة للتحميل الكسول عبر Observer
-  const img = box.querySelector("img");
-  observer.observe(img);
-}
-
-function updateLoadMoreButton() {
-  setTimeout(() => {
-    const hiddenImages = document.querySelectorAll(".extra-images");
-    document.getElementById("loadMore").style.display = hiddenImages.length > 0 ? "block" : "none";
-  }, 100);
-}
-
-// الأحداث ديال الأزرار
-buttons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    buttons.forEach((b) => b.parentElement.classList.remove("active"));
-    btn.parentElement.classList.add("active");
-    currentShown = 8;
-    loadCategory(btn.dataset.name);
-  });
-});
-
-// تحميل أولي
-window.addEventListener("DOMContentLoaded", () => {
-  loadCategory("all");
-  document.querySelector('[data-name="all"]').parentElement.classList.add("active");
-});
-
-// زر عرض المزيد
-document.getElementById("loadMore").addEventListener("click", function () {
-  const hiddenImages = document.querySelectorAll(".extra-images");
-  const toShow = Math.min(8, hiddenImages.length);
-
-  for (let i = 0; i < toShow; i++) {
-    hiddenImages[i].style.display = "block";
-    hiddenImages[i].classList.remove("extra-images");
-
-    // نراقب الصورة الجديدة بالـ IntersectionObserver
-    const img = hiddenImages[i].querySelector("img");
-    if (img) observer.observe(img);
-  }
-
-  updateLoadMoreButton();
-});
-
-       </script>
-
+      
            
             
     </div>
