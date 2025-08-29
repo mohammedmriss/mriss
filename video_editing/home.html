@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mohammed Mriss - Multimedia Developer</title>
     <!-- Normalize For Render Page -->
     <link rel="stylesheet" href="../style/css/normalize.css">
     <!-- Google Font -->
@@ -17,10 +17,105 @@
     <!-- Start Style page css -->
     <link rel="stylesheet" href="../style/css/home.css">
 
+    <style>
+        .portfolio {
+  padding-top: 80px;
+  padding-bottom: 100px;
+  width: 100%; /* تأكد من أن العرض 100% */
+  margin: 0; /* إزالة أي هوامش خارجية */
+}
+/* Popup Styles */
+        #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        #popup.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        #popupImage {
+            max-width: 90%;
+            max-height: 90%;
+            border: none;
+        }
+        
+        #closePopup {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+    </style>
+ <style>
+     #loader-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #292929;
+  display: flex;
+  justify-content: center; /* مركز أفقياً */
+  align-items: center;     /* مركز عمودياً */
+  z-index: 9999;
+}
+
+.loader {
+  font-size: 24px; /* صغر الحجم ديال النص */
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* مسافة بين الصورة والخط */
+}
+
+.loader img {
+  width: 200px;   /* عرض الصورة مصغر */
+  height: auto;  /* يحافظ على النسبة */
+}
+
+.loader::after {
+  content: '';
+  height: 8px;
+  width: 0;
+  display: block;
+  background: #fff;
+  animation: lineGrow 2.5s linear infinite;
+  border-radius: 2px;
+  margin-top: 2px;
+  align-self: stretch; /* باش الخط يعمّر العرض ديال اللودر */
+}
+
+@keyframes lineGrow {
+  to {
+    width: 100%;
+  }
+}
+
+    </style>
+
     
 </head>
+
+
 <body>
-    
+   
   <!-- Loader -->
    <div id="loader-wrapper" >
     <span class="loader">
@@ -78,62 +173,12 @@ document.addEventListener('DOMContentLoaded', function () {
     
 </div>
 </div>
-<!-- Carte Profil -->
-<div class="profile-card">
-    <button class="close-btn" id="closeBtn">&times;</button>
-    
-    <!-- Section gauche (Profil + QR) -->
-    <div class="left-section">
-        <img src="../style/img/imglo (1).jpeg" alt="Photo de profil" class="profile-img">
-        <h2 class="profile-name">Mohammed Mriss</h2>
-        <p class="profile-title">Multimedia Developer</p>
-        
-        <div class="qr-container">
-            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?data=https://wa.me/212612291629&size=150x150" alt="WhatsApp QR">
-            <p class="qr-text">Contact me on WhatsApp</p>
-        </div>
+
+<!-- Popup Structure -->
+    <div id="popup">
+        <span id="closePopup">&times;</span>
+        <img id="popupImage" src="" alt="Enlarged Image">
     </div>
-    
-    <!-- Section droite (About) -->
-    <div class="right-section">
-        <div class=""></div>
-        <div class="" style="padding-left: 30px; padding-right: 30px;">
-        <h1 class="section-title" style="color: black; ">Say Hi on WhatsApp!</h1>
-        <p class="about-text">
-            Hello! I’m Mohamed, a specialist in multimedia development, which includes graphic design, web development, and video editing. I use these skills to help people achieve their goals in a smart and effective way.
-            Do you have any questions or need assistance? Scan the QR code to connect with me directly on WhatsApp. I’m here to chat and make things easier for you!
-
-
-        </p>
-        </div>
-    
-    </div>
-</div>
-
-<script>
-    // Générer le QR code WhatsApp
-    function generateQRCode() {
-        const phoneNumber = "212612291629"; // Remplacez par votre numéro
-        const whatsappUrl = `https://wa.me/${phoneNumber}`;
-        const qrSize = 120;
-        const qrCodeUrl = `https://chart.googleapis.com/chart?cht=qr&chs=${qrSize}x${qrSize}&chl=${encodeURIComponent(whatsappUrl)}`;
-        
-        document.getElementById('whatsappQr').innerHTML = `<img src="${qrCodeUrl}" alt="QR Code WhatsApp">`;
-    }
-    
-    // Fermer la carte
-    document.getElementById('closeBtn').addEventListener('click', function() {
-        document.querySelector('.profile-card').style.display = 'none';
-    });
-    
-    // Générer le QR code au chargement
-    document.addEventListener('DOMContentLoaded', generateQRCode);
-</script>
-        
-    <video id="bg-video" autoplay muted loop playsinline>
-        <source src="style/video/" type="video/mp4">
-        Your browser does not support HTML5 video.
-      </video>
    
       <!-- Start header -->
 <div class="header">
@@ -149,7 +194,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 <li><a href="#About">About</a></li>
                 <li><a href="#Resum">Resum</a></li>
                 <li><a href="#Contact">Contact</a></li>
-                
             </ul>
         </nav>
     </div>
@@ -162,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="portfolio" id="Projects" style="padding-top: 150px;">
         <div class="container">
             <div class="main-heading">
-                <h2>video editing</h2>
+                <h2>Video Editing</h2>
                 <!-- <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p> -->
             </div>
             
